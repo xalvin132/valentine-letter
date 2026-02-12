@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>For You 💌</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; margin: 0; background: #fff; }
+    .wrap { max-width: 520px; margin: 0 auto; padding: 28px 18px; }
+    .card { border: 2px solid #111; border-radius: 16px; padding: 18px; box-shadow: 6px 6px 0 #111; }
+    h1 { margin: 0 0 10px; font-size: 22px; }
+    p { line-height: 1.45; }
+    .btns { display: grid; gap: 10px; margin-top: 16px; }
+    button {
+      padding: 14px 14px; font-size: 16px; border-radius: 12px;
+      border: 2px solid #111; background: #fff; cursor: pointer;
+      box-shadow: 4px 4px 0 #111;
+    }
+    button:active { transform: translate(2px,2px); box-shadow: 2px 2px 0 #111; }
+    .hidden { display: none; }
+    .small { font-size: 13px; opacity: 0.85; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" id="screen1">
+      <h1>💌 A letter for you</h1>
+      <p>
+        Knock knock… you’ve unlocked a secret message.<br>
+        Ready to open it?
+      </p>
+      <div class="btns">
+        <button onclick="openLetter()">Open the letter ✨</button>
+      </div>
+      <div class="small">Hint: it’s from someone who really likes you 😌</div>
+    </div>
+
+    <div class="card hidden" id="screen2">
+      <h1>Dear my love,</h1>
+      <p>
+        I made this little “game” because you make life more fun.<br><br>
+        Will you be my Valentine? 💘
+      </p>
+      <div class="btns">
+        <button onclick="answerYes()">Yes ✅</button>
+        <button onclick="answerYes()">Yes (obviously) 😌✅</button>
+      </div>
+    </div>
+
+    <div class="card hidden" id="screen3">
+      <h1>AAAAA LET’S GOOO 💖</h1>
+      <p>
+        Best answer ever. You just made my day.<br>
+        Screenshot this and send it to me 😏
+      </p>
+      <div class="btns">
+        <button onclick="confetti()">Tap for extra magic ✨</button>
+      </div>
+      <div class="small" id="magic"></div>
+    </div>
+  </div>
+
+  <script>
+    const s1 = document.getElementById("screen1");
+    const s2 = document.getElementById("screen2");
+    const s3 = document.getElementById("screen3");
+    const magic = document.getElementById("magic");
+
+    function openLetter() { s1.classList.add("hidden"); s2.classList.remove("hidden"); }
+    function answerYes() { s2.classList.add("hidden"); s3.classList.remove("hidden"); }
+
+    function confetti() {
+      const emojis = ["💖","✨","💘","🥰","🌸","🍓","🎀"];
+      let line = "";
+      for (let i=0;i<30;i++) line += emojis[Math.floor(Math.random()*emojis.length)] + " ";
+      magic.textContent = line;
+    }
+  </script>
+</body>
+</html>
